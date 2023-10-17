@@ -1,0 +1,2 @@
+!function(){var n="https://api.thecatapi.com/v1",t="live_PT1y6jyiP6j6Uou4H075ma9te5HwnwjNAaf8UWMRCahkfYJogPikmAOX28RvdITp";var e=document.querySelector(".breed-select");fetch("".concat(n,"/breeds?x-api-key=").concat(t)).then((function(n){if(!n.ok)throw new Error(n.statusText);return n.json()})).then((function(n){return e.innerHTML=n.map((function(n){var t=n.id,e=n.name;return'<option value="'.concat(t,'">').concat(e,"</option>")})).join("")})).catch((function(n){return console.error(n)}))}();
+//# sourceMappingURL=index.dc81043b.js.map
