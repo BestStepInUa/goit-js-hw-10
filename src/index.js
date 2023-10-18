@@ -11,11 +11,9 @@ Notify.init({
 
 const select = document.querySelector('.breed-select');
 const loader = document.querySelector('.loader');
-// const error = document.querySelector('.error')
 const catInfoCard = document.querySelector('.cat-info');
 
 select.style.display = 'none';
-// error.style.display = 'none';
 catInfoCard.style.display = 'none';
 
 select.addEventListener('change', onSelect);
@@ -30,8 +28,7 @@ fetchBreeds()
 
     })
     .catch((err) => {
-        console.error(err);
-        loader.style.display = 'none';
+        console.error(err);        
         Notify.failure('Oops! Something went wrong! Try reloading the page!');
     })
     .finally( _ => loader.style.display = 'none')
@@ -49,8 +46,7 @@ function onSelect(evt) {
 
     fetchCatByBreed(breedId)
         .then(catData => {
-            console.log(catData);
-            catInfoCard.style.display = 'initial';
+            catInfoCard.style.display = 'flex';
             catInfoCard.innerHTML = createCatCardMarkup(catData);
         })
         .catch((err) => {
