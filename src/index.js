@@ -51,25 +51,28 @@ function onSelect(evt) {
         .then(catData => {
             console.log(catData);
             catInfoCard.style.display = 'initial';
-            createCatCardMarkup(catData);   
+            catInfoCard.innerHTML = createCatCardMarkup(catData);
         })
         .catch((err) => {
-        console.error(err);        
-        Notify.failure('Oops! Something went wrong! Try reloading the page!');
+            console.error(err);
+            Notify.failure('Oops! Something went wrong! Try reloading the page!');
         })
-        .finally( _ => loader.style.display = 'none')
+        .finally(_ => loader.style.display = 'none');
 }
 
 function createCatCardMarkup(catData) {
     
-    const catCard = `
-      <img class="cat-img" src="${catData[0].url}" alt="${catData[0].breeds[0].name}"  >
-      <div class="cat-text">
-      <h1 class="cat-name">${catData[0].breeds[0].name}</h1>
-      <p class="cat-description">${catData[0].breeds[0].description}</p>
-      <p class="cat-temperament"><span class="cat-temperament-span">Temperament:</span> ${catData[0].breeds[0].temperament}</p>    
-      </div>`;
-    
-    catInfoCard.innerHTML = catCard
+    const {
+        url,
+        breeds
+    } = catData[0];
+    const { name, description, temperament } = breeds[0];
 
+    return `
+      <img class="cat-img" src="${url}" alt="${name}"  >
+      <div class="cat-text">
+      <h1 class="cat-name">${name}</h1>
+      <p class="cat-description">${description}</p>
+      <p class="cat-temperament"><span class="cat-temperament-span">Temperament:</span> ${temperament}</p>
+      </div>`; 
 }
