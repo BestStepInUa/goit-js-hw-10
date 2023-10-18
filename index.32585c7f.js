@@ -1,2 +1,0 @@
-const e=document.querySelector(".breed-select");fetch("https://api.thecatapi.com/v1/breeds?x-api-key=live_PT1y6jyiP6j6Uou4H075ma9te5HwnwjNAaf8UWMRCahkfYJogPikmAOX28RvdITp").then((e=>{if(!e.ok)throw new Error(e.statusText);return e.json()})).then((t=>e.innerHTML=t.map((({id:e,name:t})=>`<option value="${e}">${t}</option>`)).join(""))).catch((e=>console.error(e)));
-//# sourceMappingURL=index.32585c7f.js.map

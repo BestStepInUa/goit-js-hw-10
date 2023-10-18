@@ -1,0 +1,2 @@
+.loader{color:#000;font-family:Arial,Helvetica,sans-serif;font-size:48px;font-weight:400;display:inline-block;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}.loader:after{content:"Loading";z-index:5;position:relative}.loader:before{content:"";height:6px;width:100%;background:linear-gradient(#ff3d00 100%,rgba(0,0,0,0) 0) 0 0/0% no-repeat;border:1px solid;border-radius:10px;animation:lineGrow .5s ease-in-out infinite;position:absolute;bottom:0}@keyframes lineGrow{to{background-size:100%}}
+/*# sourceMappingURL=index.d06cd9fb.css.map */
