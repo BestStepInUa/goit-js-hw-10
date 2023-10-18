@@ -1,4 +1,6 @@
 import { fetchBreeds, fetchCatByBreed } from './js/cat-api.js'
+import SlimSelect from 'slim-select';
+import 'slim-select/dist/slimselect.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio.js';
 
 Notify.init({
@@ -20,8 +22,12 @@ select.addEventListener('change', onSelect);
 
 fetchBreeds()
     .then(breeds => {
-        select.style.display = "initial";
+        select.style.display = "flex";
         select.innerHTML = createSectionOptionsMarkup(breeds);
+        new SlimSelect({
+            select: select,
+        });
+
     })
     .catch((err) => {
         console.error(err);
@@ -55,18 +61,15 @@ function onSelect(evt) {
 }
 
 function createCatCardMarkup(catData) {
-    const {
-        breeds: { name, description, temperament },
-        url,
-    } = catData;
-
+    
     const catCard = `
-      <img class="cat-img" src="${url}" alt="${name}"  >
+      <img class="cat-img" src="${catData[0].url}" alt="${catData[0].breeds[0].name}"  >
       <div class="cat-text">
-      <h1 class="cat-name">${name}</h1>
-      <p class="cat-description">${description}</p>
-      <p class="cat-temperament"><span class="cat-temperament-span">Temperament:</span> ${temperament}</p>    
+      <h1 class="cat-name">${catData[0].breeds[0].name}</h1>
+      <p class="cat-description">${catData[0].breeds[0].description}</p>
+      <p class="cat-temperament"><span class="cat-temperament-span">Temperament:</span> ${catData[0].breeds[0].temperament}</p>    
       </div>`;
     
-    catInfoCard.innerHTML = catCard;
+    catInfoCard.innerHTML = catCard
+
 }
