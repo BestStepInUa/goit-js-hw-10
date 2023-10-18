@@ -41,7 +41,8 @@ function createSectionOptionsMarkup(breedsArr) {
 
 function onSelect(evt) {
     loader.style.display = 'initial';
-
+    catInfoCard.style.display = 'none'
+    
     const breedId = evt.target.value;
 
     fetchCatByBreed(breedId)
