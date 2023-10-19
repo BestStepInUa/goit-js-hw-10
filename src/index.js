@@ -24,6 +24,7 @@ fetchBreeds()
         select.innerHTML = createSectionOptionsMarkup(breeds);
         new SlimSelect({
             select: select,
+            placeholder: 'select breed of the cat'
         });
 
     })
@@ -51,6 +52,7 @@ function onSelect(evt) {
             catInfoCard.innerHTML = createCatCardMarkup(catData);
         })
         .catch((err) => {
+            catInfoCard.style.display = 'none';
             console.error(err);
             Notify.failure('Oops! Something went wrong! Try reloading the page!');
         })
