@@ -24,8 +24,10 @@ fetchBreeds()
         select.innerHTML = createSectionOptionsMarkup(breeds);
         new SlimSelect({
             select: select,
+            settings: {
+                placeholderText: 'Just chose a cat...',
+            },
         });
-
     })
     .catch((err) => {
         console.error(err);        
@@ -34,10 +36,11 @@ fetchBreeds()
     .finally( _ => loader.style.display = 'none')
 
 function createSectionOptionsMarkup(breedsArr) {
-    breedsArr.unshift({id: 'placeholder', name: 'Just chose a cat...'})
-    return breedsArr.map(({ id, name }) =>
-        `<option value="${id}">${name}</option>`
-    ).join('');
+    const result = breedsArr.map(
+        ({ id, name }) => `<option value="${id}">${name}</option>`
+    );
+    result.unshift(`<option data-placeholder="true"></option>`);
+    return result.join('');
 };
 
 function onSelect(evt) {
