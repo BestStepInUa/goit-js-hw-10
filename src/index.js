@@ -5,7 +5,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio.js';
 
 Notify.init({
     width: '300px',
-    position: 'center-top',
+    position: 'center-center',
     fontSize: '16px',    
 });
 
@@ -24,7 +24,6 @@ fetchBreeds()
         select.innerHTML = createSectionOptionsMarkup(breeds);
         new SlimSelect({
             select: select,
-            placeholder: 'select breed of the cat'
         });
 
     })
@@ -35,6 +34,7 @@ fetchBreeds()
     .finally( _ => loader.style.display = 'none')
 
 function createSectionOptionsMarkup(breedsArr) {
+    breedsArr.unshift({id: 'placeholder', name: 'Just chose a cat...'})
     return breedsArr.map(({ id, name }) =>
         `<option value="${id}">${name}</option>`
     ).join('');
